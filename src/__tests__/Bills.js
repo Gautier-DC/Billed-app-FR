@@ -1,6 +1,8 @@
 import { screen } from "@testing-library/dom"
 import BillsUI from "../views/BillsUI.js"
 import { bills } from "../fixtures/bills.js"
+import {setLocalStorage} from "../../setup-jest"
+setLocalStorage('Employee')
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
