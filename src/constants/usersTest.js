@@ -1,6 +1,10 @@
 export default [
-    'cedric.hiely@billed.com',
+    'gautier@gmail.com',    
+    /* 'cedric.hiely@billed.com',
     'christian.saluzzo@billed.com',
     'jean.limbert@billed.com',
-    'joanna.binet@billed.com'
+    'joanna.binet@billed.com' */
+    
 ]
+
+
