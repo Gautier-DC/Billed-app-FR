@@ -18,4 +18,9 @@ describe('Given I am connected as Employee', () => {
       //to-do write expect expression
     })
   })
+  describe('When I am on NewBill page', () => {
+    test("Then newBill icon in vertical layout should be highlighted", () => {
+
+    })
+  })
 })

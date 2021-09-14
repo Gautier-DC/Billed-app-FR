@@ -71,7 +71,7 @@ describe("Given I am connected as an employee", () => {
             expect(document.querySelector('.modal')).toBeTruthy()
             const btnClose = screen.getByTestId('btn-close')
             fireEvent.click(btnClose)
-            console.log('======', document.querySelector(".modal"))
+            console.log('======', JSON.stringify(document.querySelector(".modal")))
             expect(document.querySelector('.modal')).not.toBeVisible()
           })
         })
