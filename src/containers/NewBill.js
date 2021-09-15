@@ -40,7 +40,7 @@ export default class NewBill {
       })
     } else {
       const fileInput = document.querySelector(`input[data-testid="file"]`)
-      fileInput.insertAdjacentHTML('afterend', "<p class='error-img-type'>Le format de votre image n'est pas valide (jpg, jpeg ou png)</p>")
+      fileInput.insertAdjacentHTML('afterend', "<p class='error-img-type' data-testid='error-msg'>Le format de votre image n'est pas valide (jpg, jpeg ou png)</p>")
       fileInput.value = null
     }
   }

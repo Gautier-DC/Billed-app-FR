@@ -2,6 +2,8 @@ import { screen } from "@testing-library/dom"
 import {setupLocaleStorage} from "../../setup-jest"
 import router from "../app/Router.js"
 
+//Setup
+
 jest.mock("../containers/Bills.js", () => {
   return jest.fn().mockImplementation(function () {
     return {
@@ -15,13 +17,7 @@ jest.mock("../containers/Bills.js", () => {
 
 beforeEach(() => {
   setupLocaleStorage('Employee')
-  Object.defineProperty(window, "location", {
-    value: {
-      pathname: "/",
-      hash: "",
-    },
-  });
-  window.location.hash = "#employee/bills"
+  Object.defineProperty(window, "location", { value: { hash: "#employee/bills" } })
   document.body.innerHTML = `<div id='root'></div>`
   router()
 })
@@ -29,6 +25,8 @@ beforeEach(() => {
 afterEach(() => {
   jest.clearAllMocks()
 })
+
+//Start tests
 
 describe('Given I am connected as Employee', () => {
   describe('When I am on Bills page', () => {
