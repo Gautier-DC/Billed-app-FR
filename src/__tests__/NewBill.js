@@ -31,16 +31,19 @@ describe("Given I am connected as an employee", () => {
     })
     describe("And I want to upload a file", () => {
       test("Then a file should appear in the field", () =>{
-        const newBill = new NewBill({document, onNavigate, firestore: firestore, localStorage: window.localStorage})
-        const handleChangeFile = jest.fn(newBill.handleChangeFile)
-        const myFile = screen.getByTestId('file')
-        myFile.addEventListener("change", handleChangeFile)
-        fireEvent.change(myFile, {
-          target: {
-            files: [new File(["regular-image.jpg"], "regular-image.jpg", { type: "image/jpeg" })],
-          },
-        });
-        expect(handleChangeFile).toHaveBeenCalledTimes(1)
+        if(!this.firestore) {
+          const testNewBill = new NewBill({document, onNavigate, firestore: null, localStorage: window.localStorage})
+          const handleChangeFile = jest.fn(testNewBill.handleChangeFile)
+          const myFile = screen.getByTestId('file')
+          myFile.addEventListener("change", handleChangeFile)
+          fireEvent.change(myFile, {
+            target: {
+              files: [new File(["regular-image.jpg"], "regular-image.jpg", { type: "image/jpeg" })],
+            },
+          });
+          console.log("********", myFile)
+          expect(handleChangeFile).toHaveBeenCalledTimes(1)
+        }
       })
       test("Then an error occured if its a bad format file", () =>{
       })
