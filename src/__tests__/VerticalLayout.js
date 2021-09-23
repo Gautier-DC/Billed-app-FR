@@ -23,6 +23,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  document.body.innerHTML = null
   jest.clearAllMocks()
 })
 

@@ -4,6 +4,7 @@ import { bills } from "../fixtures/bills.js"
 import Bills from "../containers/Bills"
 import BillsUI from "../views/BillsUI.js"
 import firebase from "../__mocks__/firebase"
+import { ROUTES } from "../constants/routes"
 
 //Setup
 
@@ -18,6 +19,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  document.body.innerHTML = null
   jest.clearAllMocks()
 })
 
