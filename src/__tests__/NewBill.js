@@ -2,6 +2,7 @@ import {setupLocaleStorage} from "../../setup-jest"
 import { fireEvent, screen} from "@testing-library/dom"
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
+import BillsUI from "../views/BillsUI"
 import firestore from "../app/Firestore.js"
 import firebase from "../__mocks__/firebase"
 import { ROUTES } from "../constants/routes"
@@ -105,7 +106,25 @@ describe("Given I am a user connected as Employee", () => {
        const postSpy = jest.spyOn(firebase, "post")
        const bills = await firebase.post(NewBill)
        expect(postSpy).toHaveBeenCalledTimes(1)
-       expect(bills.data.length).toBe(1)
+       expect(bills.data.length).toEqual(1)
+    })
+    test("create a new bill and fails with 404 message error", async () => {
+      firebase.post.mockImplementationOnce(() =>
+        Promise.reject(new Error("Erreur 404"))
+      )
+      const html = BillsUI({ error: "Erreur 404" })
+      document.body.innerHTML = html
+      const message = await screen.getByText(/Erreur 404/)
+      expect(message).toBeTruthy()
+    })
+    test("create a new bill an API and fails with 500 message error", async () => {
+      firebase.post.mockImplementationOnce(() =>
+        Promise.reject(new Error("Erreur 500"))
+      )
+      const html = BillsUI({ error: "Erreur 500" })
+      document.body.innerHTML = html
+      const message = await screen.getByText(/Erreur 500/)
+      expect(message).toBeTruthy()
     })
   })
 })
