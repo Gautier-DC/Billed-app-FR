@@ -50,7 +50,7 @@ describe("Given I am connected as an employee", () => {
     })
     describe("And there is a bill", () => {
       describe("When I click on eye icon", () =>{
-        test("Then the new bill should open", ()=>{
+        test("Then the modal should open", ()=>{
           const testBill = new Bills({document, onNavigate, firestore: null , localStorage: window.localStorage})
           testBill.handleClickIconEye = jest.fn()
           screen.getAllByTestId('icon-eye')[0].click()
